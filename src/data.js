@@ -1,4 +1,11 @@
 import firebase from "firebase";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router";
+
+
+
+
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyBXDwRwO0_Lnk8SXgvcG9TVaE7RMIeStwA",
@@ -33,11 +40,13 @@ const signInWithGoogle = async () => {
         authProvider: "google",
         email: user.email,
       });
+      <Redirect to="/dashboard" />
     }
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
+
 
   
   
@@ -47,6 +56,8 @@ const signInWithGoogle = async () => {
 const logout = () => {
   auth.signOut();
 };
+
+
 
 export {
   auth,
