@@ -1,0 +1,74 @@
+
+.welcomeTitle {
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+
+  color: #000000;
+  margin-left: 20%;
+  margin-top: 10%;
+}
+
+.mfTitle {
+  margin-left: 20%;
+}
+
+.titleSTEM {
+  display: inline;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  color: #B1B1B1;
+}
+
+.titleAE {
+  display: inline;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 72px;
+  color: #FF6D88;
+}
+
+.buttonSignIn {
+  background: #FF6D88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 30%;
+  border: none;
+  padding: 15px 32px;
+  font-family: Verdana;
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
+  text-decoration:none;
+}
+
+.buttonSignIn:hover {
+  background: #6A7081;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px){
+
+  .buttonSignIn {
+    width: 90%;
+    margin: 5%;
+    
+  }
+
+  .titleAE {
+    font-size: 48px;
+  }
+
+  .titleSTEM {
+    font-size: 48px;
+  }
+
+	/*Big smartphones [426px -> 600px]*/
+}
