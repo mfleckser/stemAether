@@ -26,15 +26,14 @@ function App() {
 
   return (
     <Router>
+      {!user ? (
+        <Welcome />
+      ): (
       <div className = "app">
         <Switch>
         
           <Route exact path="/">
-            <Welcome />
-          </Route>
-
-          <Route exact path = "/dashboard">
-            <Dashboard user = {user} /> 
+            <Dashboard user = {user} />
           </Route>
 
           <Route path="/checkin/:roomNum">
@@ -43,6 +42,7 @@ function App() {
 
         </Switch>
       </div>
+    )}
     </Router>
   );
 }

@@ -2,11 +2,6 @@ import firebase from "firebase";
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router";
 
-
-
-
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyBXDwRwO0_Lnk8SXgvcG9TVaE7RMIeStwA",
     authDomain: "stem-aether.firebaseapp.com",
@@ -53,7 +48,11 @@ const signInWithGoogle = async () => {
 
 
 const logout = () => {
-  auth.signOut();
+  auth.signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+  });
 };
 
 

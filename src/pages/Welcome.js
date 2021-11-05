@@ -9,7 +9,7 @@ function Welcome() {
 
   const handleSignIn = () => {
     signInWithGoogle();
-    history.push("/dashboard");
+    history.replace("/");
   }
 
   return(
