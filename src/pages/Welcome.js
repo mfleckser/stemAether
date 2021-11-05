@@ -1,9 +1,16 @@
 import './Welcome.css';
 import { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../data"
 
+
 function Welcome() {
+  let history = useHistory();
+
+  const handleSignIn = () => {
+    signInWithGoogle();
+    history.push("/dashboard");
+  }
 
   return(
     <div className= "wholeThing">
@@ -15,7 +22,7 @@ function Welcome() {
       </div>
       
       
-        <button className = "buttonSignIn" onClick={signInWithGoogle}>Sign In With Google</button>
+        <button className = "buttonSignIn" onClick={handleSignIn}>Sign In With Google</button>
       
 
     </div>
