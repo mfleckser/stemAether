@@ -40,7 +40,6 @@ const signInWithGoogle = async () => {
         authProvider: "google",
         email: user.email,
       });
-      <Redirect to="/dashboard" />
     }
   } catch (err) {
     console.error(err);
