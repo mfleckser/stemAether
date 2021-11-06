@@ -1,0 +1,49 @@
+.img_fit {
+  width: 10%;
+  height: 30%;
+  object-fit: contain;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.dashboardHeader_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleAE {
+  display: inline;
+  font-family: Amaranth;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 50px;
+  color: #000000;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  width: 30%;
+  margin-left: 3%;
+  margin-right: 3%;
+  background-color: #6a7081;
+  border-radius: 5px;
+}
+
+.content {
+  color: white;
+  font-family: Almarai;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 112px;
+  display: inline;
+  align-items: center;
+  color: #ffffff;
+}

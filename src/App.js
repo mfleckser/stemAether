@@ -9,7 +9,7 @@ import {
 import Welcome from './pages/Welcome.js'
 import Checkin from './pages/Checkin.js'
 import Dashboard from './pages/Dashboard.js'
-
+import 'bulma/css/bulma.min.css';
 import { auth } from "./data"
 
 
