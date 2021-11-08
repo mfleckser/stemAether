@@ -27,11 +27,11 @@ function Dashboard({ user }) {
       </div>
       <div>
         <center>
-      <h1 className="titleAE">Select a Floor</h1>
+      <h1 className="titleA2">Select a Floor</h1>
       </center>
       </div>
       <div className = "cards">
-      <div class="card">
+      <div style = {{background: "#6a7081"}} class="card">
         <div class="card-content">
           <div class="content">
             <center>
@@ -40,7 +40,7 @@ function Dashboard({ user }) {
           </div>
         </div>
       </div>
-      <div class="card">
+      <div style = {{background: "#6a7081"}} class="card">
         <div class="card-content">
           <div class="content">
           <center>
@@ -49,7 +49,7 @@ function Dashboard({ user }) {
           </div>
         </div>
       </div>
-      <div class="card">
+      <div style = {{background: "#6a7081"}} class="card">
         <div class="card-content">
           <div class="content">
           <center>

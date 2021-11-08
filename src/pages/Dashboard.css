@@ -11,9 +11,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  /* margin-top: 2%; */
 }
 
-.titleAE {
+.titleA2 {
   display: inline;
   font-family: Amaranth;
   font-style: normal;
@@ -32,8 +36,9 @@
   width: 30%;
   margin-left: 3%;
   margin-right: 3%;
-  background-color: #6a7081;
+  background: #6a7081;
   border-radius: 5px;
+  height: 33%;
 }
 
 .content {
@@ -45,5 +50,4 @@
   line-height: 112px;
   display: inline;
   align-items: center;
-  color: #ffffff;
 }
