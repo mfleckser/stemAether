@@ -26,10 +26,10 @@ function App() {
 
   return (
     <Router>
+      <div className = "app">
       {!user ? (
         <Welcome />
       ): (
-      <div className = "app">
         <Switch>
         
           <Route exact path="/">
@@ -41,8 +41,8 @@ function App() {
           </Route>
 
         </Switch>
+      )}
       </div>
-    )}
     </Router>
   );
 }
