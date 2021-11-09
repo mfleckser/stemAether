@@ -9,8 +9,6 @@ import 'bulma/css/bulma.min.css';
 
 function Dashboard({ user }) {
   let history = useHistory();
-
-
   const handleSignOut = () => {
     logout();
     history.replace(<Welcome/>);
@@ -20,8 +18,15 @@ function Dashboard({ user }) {
   return(
     
     <div>
+      <Header/>
       <div className = "dashboardHeader_left">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <center>
       <h1>Hello, {user.displayName}</h1>
+      </center>
       {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
       <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
       </div>
