@@ -1,4 +1,3 @@
-
 .welcomeTitle {
   font-family: Verdana;
   font-style: normal;
@@ -20,7 +19,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 72px;
-  color: #B1B1B1;
+  color: #b1b1b1;
 }
 
 .titleAE {
@@ -29,11 +28,11 @@
   font-style: normal;
   font-weight: bold;
   font-size: 72px;
-  color: #FF6D88;
+  color: #ff6d88;
 }
 
 .buttonSignIn {
-  background: #FF6D88;
+  background: #ff6d88;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,20 +45,19 @@
   font-weight: bold;
   color: white;
   font-size: 30px;
-  text-decoration:none;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .buttonSignIn:hover {
-  background: #6A7081;
+  background: #6a7081;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px){
-
+@media only screen and (max-width: 600px) {
   .buttonSignIn {
     width: 90%;
     margin: 5%;
-    
   }
 
   .titleAE {
@@ -70,5 +68,5 @@
     font-size: 48px;
   }
 
-	/*Big smartphones [426px -> 600px]*/
+  /*Big smartphones [426px -> 600px]*/
 }

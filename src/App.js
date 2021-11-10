@@ -7,7 +7,12 @@ import {
   Link
 } from "react-router-dom";
 import Welcome from './pages/Welcome.js'
+import Settings from './pages/Settings.js'
+import About from './pages/About.js'
+import Contact from './pages/Contact.js'
 import Checkin from './pages/Checkin.js'
+import GFloor from './pages/GFloor.js'
+
 import Dashboard from './pages/Dashboard.js'
 import 'bulma/css/bulma.min.css';
 import { auth } from "./data"
@@ -38,6 +43,18 @@ function App() {
 
           <Route path="/checkin/:roomNum">
             <Checkin />
+          </Route>
+
+          <Route exact path="/settings">
+            <Settings />
+          </Route>
+
+          <Route exact path="/about">
+            <About />
+          </Route>
+
+          <Route exact path="/contact">
+            <Contact/>
           </Route>
 
         </Switch>
