@@ -21,6 +21,11 @@ function Header() {
         <Menu classname={"bars"} left>
             <h1 className = "sidebar_title">STEM <span>AETHER</span></h1>
             <hr className = "horizontal_line"/>
+
+
+            <a className="menu-item" href="/">
+            Home
+          </a>
             
         
           <a className="menu-item" href="/settings">

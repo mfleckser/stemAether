@@ -12,6 +12,11 @@ import About from './pages/About.js'
 import Contact from './pages/Contact.js'
 import Checkin from './pages/Checkin.js'
 import GFloor from './pages/GFloor.js'
+import SecondFloor from './pages/SecondFloor.js'
+import FirstFloor from './pages/FirstFloor.js'
+
+
+
 
 import Dashboard from './pages/Dashboard.js'
 import 'bulma/css/bulma.min.css';
@@ -56,6 +61,19 @@ function App() {
           <Route exact path="/contact">
             <Contact/>
           </Route>
+
+          <Route exact path="/ground">
+            <GFloor user = {user}/>
+          </Route>
+
+          <Route exact path="/firstFloor">
+            <FirstFloor user = {user}/>
+          </Route>
+          
+          <Route exact path="/secondFloor">
+            <SecondFloor user = {user}/>
+          </Route>
+
 
         </Switch>
       )}

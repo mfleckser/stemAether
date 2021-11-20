@@ -51,8 +51,29 @@
   align-items: center;
 }
 
+.contentG {
+  color: white;
+  font-family: Almarai;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 112px;
+  display: inline;
+  align-items: center;
+}
+
+.content:hover {
+  color: #ff6d88;
+}
+
+.cards:hover {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
   .cards {
     display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
