@@ -1,13 +1,13 @@
-
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 
+// Rooms data
 const rooms = {
     'G': [
         {
-            roomName:'room 2',
             name: 'polygon',
             params: {
+                'roomName': 'room 2',
                 'coordies': [[200,100], [230, 100], [350, 150], [350, 200], [200, 200]],
                 'color': '#FFFFFF',
                 'hoverColor': '#000000'
@@ -16,9 +16,10 @@ const rooms = {
             range: [200, 100, 350, 200]
         },
         {
-            roomName:'room 1',
+            
             name: 'rectangle', 
             params: {
+                'roomName':'room 1',
                 'coordies': [100, 100, 100, 100],
                 'color': '#FFFFFF',
                 'hoverColor': '#000000'
@@ -36,16 +37,17 @@ const Canvas = props => {
     const canvasRef = useRef(null) 
     const [hoveredRoom, setHoveredRoom] = useState(null)
     const [clickedRoom, setClickedRoom] = useState(null)
+    const [occupiedRoom, setOccupiedRoom] = useState(null)
 
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
 
-        context.canvas.width = window.innerWidth
-        context.canvas.height = window.innerHeight
+        context.canvas.width = window.innerWidth - .1*window.innerWidth
+        context.canvas.height = window.innerHeight - .1*window.innerHeight
 
         const shapeFunctions = {
-            'rectangle': (params, isHovered, isClicked) => {
+            'rectangle': (params, range, isHovered, isClicked) => {
                 const color = params['color']
                 const hoverColor = params['hoverColor']
                 if (isClicked) {
@@ -66,8 +68,11 @@ const Canvas = props => {
                 context.fillStyle = isHovered ? hoverColor : color
                 context.fill()
 
+                context.fillText(params['roomName'], 10,10)
+                //(range[0] + (range[2]-range[0])/2) - 5, (range[1] + (range[3]-range[1])/2) - 3)
+
             },
-            'polygon': (params, isHovered, isClicked) => {
+            'polygon': (params, range, isHovered, isClicked) => {
                 context.beginPath()
                 const coordies = params['coordies']
                 if (isClicked) {
@@ -145,6 +150,7 @@ const Canvas = props => {
         for (let i=0; i<shapes.length; i++) {
             const name = shapes[i].name
             const params = shapes[i].params
+            const range = shapes[i].range
             isHovered = hoveredRoom != null && hoveredRoom.roomName == shapes[i].roomName
             isClicked = clickedRoom != null && clickedRoom.roomName == shapes[i].roomName
             
@@ -153,7 +159,7 @@ const Canvas = props => {
                 clickedShape = shapes[i]
                 console.log(clickedShape)
             } else {
-                shapeFunctions[name](params, isHovered, isClicked)
+                shapeFunctions[name](params, range, isHovered, isClicked)
             }
 
         }
@@ -161,10 +167,10 @@ const Canvas = props => {
         if (clickedShape) {
             isHovered = hoveredRoom != null && hoveredRoom.roomName == clickedShape.roomName
             isClicked = clickedRoom != null && clickedRoom.roomName == clickedShape.roomName
-            shapeFunctions[clickedShape.name](clickedShape.params, isHovered, isClicked)
+            shapeFunctions[clickedShape.name](clickedShape.params, clickedShape.range, isHovered, isClicked)
         }
 
-    }, [hoveredRoom, clickedRoom])
+    }, [hoveredRoom, clickedRoom, occupiedRoom])
 
     const handleMouseMove = e => {
         const pos = [e.clientX - e.target.offsetLeft, e.clientY - e.target.offsetTop]
@@ -189,6 +195,33 @@ const Canvas = props => {
         setClickedRoom(hoveredRoom)
     }
 
-    return <canvas onClick={handleClick} onMouseMove={handleMouseMove} ref={canvasRef} {...props}/>
+    const occupyRoom = e => {
+        if (clickedRoom) {
+            clickedRoom.params.color = '#000000'
+            setOccupiedRoom(clickedRoom)
+        }
+    }
+
+    const leaveRoom = e => {
+        if (occupiedRoom != null && clickedRoom.name == occupiedRoom.name) {
+            clickedRoom.params.color = '#FFFFFF'
+            setOccupiedRoom(null)
+        }
+    }
+
+    return ( 
+        <div>
+            <canvas onClick={handleClick} onMouseMove={handleMouseMove} ref={canvasRef} {...props}/>
+        
+            <div> 
+                <button onClick={occupyRoom}>let me in the room</button>
+                <button onClick={leaveRoom}>get me out</button>
+                <p>whos here</p>
+            </div>
+
+        </div>
+        
+
+        )
 }
 export default Canvas

@@ -5,6 +5,8 @@ import Welcome from './Welcome';
 import Header from '../components/Header'
 import 'bulma/css/bulma.min.css';
 import HomeIcon from "@material-ui/icons/Home"
+import Canvas from '../components/FloorMap'
+
 
 
 
@@ -16,58 +18,27 @@ function SecondFloor({ user }) {
     history.replace(<Welcome/>);
   }
 
+  
 
-  return(
-    
+
+  return (
     <div>
-     <Header/>
-      <div className = "dashboardHeader_left">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <center>
-      <h1>Hello, {user.displayName}</h1>
-      </center>
-      {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
-      <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
-      </div>
-      <div>
-        <center>
-      <h1 className="titleA2">Select a Location - 2nd Floor</h1>
-      </center>
-      </div>
-      <div className = "cards">
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-            <center>
-            Collab Rooms
-            </center>
-          </div>
-        </div>
-      </div>
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-          <center>
-            Mezanine
-          </center>
-          </div>
-        </div>
-      </div>
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-          <center>
-            Elevator Rooms
-          </center>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-  );
+  <Header/>
+  <div className = "dashboardHeader_left">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <center>
+  <h1>Hello, {user.displayName}</h1>
+  </center>
+  {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
+  {/* <HomeIcon/> */}
+  <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
+  </div>
+  <Canvas floor="2"/>
+  </div>
+);
 }
 
 export default SecondFloor;
