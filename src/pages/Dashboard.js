@@ -21,62 +21,69 @@ function Dashboard({ user }) {
   const onClick1 = () => history.push("/firstFloor");
   const onClick2 = () => history.push("/secondFloor");
 
+  console.log("This is email:" + user.email)
+
+  
 
 
 
-  return(
-    
-    <div>
-      <Header/>
-      <div className = "dashboardHeader_left">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <center>
-      <h1>Hello, {user.displayName}</h1>
-      </center>
-      {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
-      {/* <HomeIcon/> */}
-      <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
-      </div>
+  if (user.email.includes("dasd.org")){
+    return(
       <div>
-        <center>
-      <h1 className="titleA2">Select a Floor</h1>
-      <br/>
-      </center>
-      </div>
-      <div className = "cards">
-      <div onClick={onClickG} style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="content">
+        <Header/>
+        <div className = "dashboardHeader_left">
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <center>
+        <h1>Hello, {user.displayName}</h1>
+        </center>
+        {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
+        {/* <HomeIcon/> */}
+        <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
+        </div>
+        <div>
+          <center>
+        <h1 className="titleA2">Select a Floor</h1>
+        <br/>
+        </center>
+        </div>
+        <div className = "cards">
+        <div onClick={onClickG} style = {{background: "#6a7081"}} class="card">
+          <div class="card-content">
+            <div class="content">
+              <center>
+              G
+              </center>
+            </div>
+          </div>
+        </div>
+        <div onClick={onClick1} style = {{background: "#6a7081"}} class="card">
+          <div class="card-content">
+            <div class="content">
             <center>
-            G
-            </center>
+              1
+              </center>
+            </div>
           </div>
         </div>
-      </div>
-      <div onClick={onClick1} style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="content">
-          <center>
-            1
-            </center>
+        <div onClick={onClick2} style = {{background: "#6a7081"}} class="card">
+          <div class="card-content">
+            <div class="content">
+            <center>
+              2
+              </center>
+            </div>
           </div>
         </div>
-      </div>
-      <div onClick={onClick2} style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="content">
-          <center>
-            2
-            </center>
-          </div>
         </div>
       </div>
-      </div>
-    </div>
-  );
+    );
+  } else {
+    return <Welcome/>
+  }
+  
 }
 
 export default Dashboard;
