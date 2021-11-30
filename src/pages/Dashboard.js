@@ -13,6 +13,7 @@ function Dashboard({ user }) {
   let history = useHistory();
   const handleSignOut = () => {
     logout();
+    console.log("Signed out")
     history.replace(<Welcome/>);
   }
 
