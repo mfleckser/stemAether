@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { doc, getDoc } from "firebase/firestore";
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router";
 
@@ -40,10 +41,6 @@ const signInWithGoogle = async () => {
     console.error(err);
     alert(err.message);
   }
-
-
-  
-  
 };
 
 
@@ -56,10 +53,17 @@ const logout = () => {
 };
 
 
+const checkoutRoom = async (roomNum) => {
+  const res = await db.collection("rooms").doc("0").get();
+  const data = res.data();
+  console.log(data);
+}
+
 
 export {
   auth,
   db,
   signInWithGoogle,
   logout,
+  checkoutRoom,
 };
