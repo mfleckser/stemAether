@@ -57,6 +57,11 @@ const checkoutRoom = async (roomNum) => {
   const res = await db.collection("rooms").doc("0").get();
   const data = res.data();
   console.log(data);
+
+  db.collection("rooms").doc("0").set({
+    roomName: "1234",
+    occupied: true
+})
 }
 
 

@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
+import { checkoutRoom } from "../data.js"
+
 
 // Rooms data
 const rooms = {
@@ -7,7 +9,7 @@ const rooms = {
         {
             name: 'polygon',
             params: {
-                'roomName': 'room 2',
+                'roomNumber': 2,
                 'coordies': [[200,100], [230, 100], [350, 150], [350, 200], [200, 200]],
                 'color': '#FFFFFF',
                 'hoverColor': '#000000'
@@ -19,7 +21,7 @@ const rooms = {
             
             name: 'rectangle', 
             params: {
-                'roomName':'room 1',
+                'roomNumber':0,
                 'coordies': [100, 100, 100, 100],
                 'color': '#FFFFFF',
                 'hoverColor': '#000000'
@@ -31,6 +33,11 @@ const rooms = {
     '2': []
     
 }
+
+// const setRoom = () => {
+//     checkoutRoom(rooms.params["roomNumber"]);
+//     alert("Test");
+//   }
 
 const Canvas = props => {
     const floor = props.floor
@@ -50,6 +57,7 @@ const Canvas = props => {
             'rectangle': (params, range, isHovered, isClicked) => {
                 const color = params['color']
                 const hoverColor = params['hoverColor']
+                
                 if (isClicked) {
                     context.beginPath()
                     const coordies = params['coordies']
@@ -68,7 +76,7 @@ const Canvas = props => {
                 context.fillStyle = isHovered ? hoverColor : color
                 context.fill()
 
-                context.fillText(params['roomName'], 10,10)
+                context.fillText(params['roomNumber'], 10,10)
                 //(range[0] + (range[2]-range[0])/2) - 5, (range[1] + (range[3]-range[1])/2) - 3)
 
             },
@@ -125,6 +133,7 @@ const Canvas = props => {
                     })
                     context.closePath()
                     context.stroke();
+                    
                 } else {
                     context.moveTo(...coordies[0])
                     coordies.forEach((coord) => {
@@ -151,8 +160,8 @@ const Canvas = props => {
             const name = shapes[i].name
             const params = shapes[i].params
             const range = shapes[i].range
-            isHovered = hoveredRoom != null && hoveredRoom.roomName == shapes[i].roomName
-            isClicked = clickedRoom != null && clickedRoom.roomName == shapes[i].roomName
+            isHovered = hoveredRoom != null && hoveredRoom.roomNumber == shapes[i].roomNumber
+            isClicked = clickedRoom != null && clickedRoom.roomNumber == shapes[i].roomNumber
             
 
             if (isClicked) {
@@ -165,8 +174,8 @@ const Canvas = props => {
         }
         
         if (clickedShape) {
-            isHovered = hoveredRoom != null && hoveredRoom.roomName == clickedShape.roomName
-            isClicked = clickedRoom != null && clickedRoom.roomName == clickedShape.roomName
+            isHovered = hoveredRoom != null && hoveredRoom.roomNumber == clickedShape.roomNumber
+            isClicked = clickedRoom != null && clickedRoom.roomNumber == clickedShape.roomNumber
             shapeFunctions[clickedShape.name](clickedShape.params, clickedShape.range, isHovered, isClicked)
         }
 
@@ -191,6 +200,7 @@ const Canvas = props => {
     }
     
     const handleClick = e => {
+        // setRoom()
         setClickedRoom(null)
         setClickedRoom(hoveredRoom)
     }
@@ -199,6 +209,8 @@ const Canvas = props => {
         if (clickedRoom) {
             clickedRoom.params.color = '#000000'
             setOccupiedRoom(clickedRoom)
+            // checkoutRoom(0);
+            console.log("function called")
         }
     }
 
@@ -212,6 +224,7 @@ const Canvas = props => {
     return ( 
         <div>
             <canvas onClick={handleClick} onMouseMove={handleMouseMove} ref={canvasRef} {...props}/>
+           
         
             <div> 
                 <button onClick={occupyRoom}>let me in the room</button>
@@ -222,6 +235,6 @@ const Canvas = props => {
         </div>
         
 
-        )
+        );
 }
 export default Canvas

@@ -8,15 +8,14 @@ function Checkin() {
     let { roomNum } = useParams();
 
     const setRoom = () => {
-      checkoutRoom(0);
-      alert("Test");
+      checkoutRoom(roomNum);
     }
 
   return (
     <div>
     
         Room #: {roomNum}
-        <button onClick={setRoom}>Do the thing</button>
+        <button onClick={setRoom}>Occupy room</button>
 
     </div>
   );
