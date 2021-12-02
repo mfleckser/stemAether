@@ -16,7 +16,6 @@ import SecondFloor from './pages/SecondFloor.js'
 import FirstFloor from './pages/FirstFloor.js'
 import { useHistory } from "react-router-dom"
 
-import { user } from "./data.js"
 
 
 
@@ -63,7 +62,7 @@ function App() {
             </Route>
   
             <Route path="/checkin/:roomNum">
-              <Checkin />
+              <Checkin user = {user} />
             </Route>
   
             <Route exact path="/settings">
