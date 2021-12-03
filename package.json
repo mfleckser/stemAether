@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "bulma": "^0.9.3",
+    "draw-shape-reactjs": "^1.0.2",
     "firebase": "^8.5.0",
     "react": "^17.0.2",
     "react-burger-menu": "^3.0.6",

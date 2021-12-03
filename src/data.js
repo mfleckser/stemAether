@@ -64,6 +64,13 @@ const occupyRoom = async (floorNum, roomNum, displayName) => {
   )
 }
 
+const getRoomData = async (floorNum, roomNum) => {
+  const res = await db.collection("1stFloor").doc("0").get().then(doc => {
+    const data = doc.data();
+    console.log(data); // LA city object with key-value pair
+  });
+}
+
 
 
 export {
@@ -71,5 +78,6 @@ export {
   db,
   signInWithGoogle,
   logout,
-  occupyRoom
+  occupyRoom,
+  getRoomData
 };

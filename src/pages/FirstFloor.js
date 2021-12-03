@@ -1,10 +1,20 @@
 import './Dashboard.css';
 import { useHistory } from "react-router-dom"
+import { useState } from 'react'
 import { auth, signInWithEmailAndPassword, signInWithGoogle, logout } from "../data"
 import Welcome from './Welcome';
 import Header from '../components/Header'
 import 'bulma/css/bulma.min.css';
 import HomeIcon from "@material-ui/icons/Home"
+import { getRoomData } from "../data.js"
+
+import {
+  Line,
+  SteppedLine,
+  PolyLine,
+  Circle,
+  Rectangle
+} from 'draw-shape-reactjs';
 
 
 
@@ -17,55 +27,46 @@ function FirstFloor({ user }) {
   }
 
 
+  const [floorNum, setFloorNum] = useState("1stFloor");
+  const [roomNum, setRoomNum] = useState(0);
+
+
+
+  const setRoom = () => {
+    getRoomData(floorNum, roomNum);
+    console.log("function called")
+  }
+
+
   return(
     
     <div>
-     <Header/>
-      <div className = "dashboardHeader_left">
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <center>
-      <h1>Hello, {user.displayName}</h1>
-      </center>
-      {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
-      <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
-      </div>
-      <div>
-        <center>
-      <h1 className="titleA2">Select a Location - 1st Floor</h1>
-      </center>
-      </div>
-      <div className = "cards">
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-            <center>
-            Knoco
-            </center>
-          </div>
-        </div>
-      </div>
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-          <center>
-            Mezanine
-          </center>
-          </div>
-        </div>
-      </div>
-      <div style = {{background: "#6a7081"}} class="card">
-        <div class="card-content">
-          <div class="contentG">
-          <center>
-            Elevator Rooms
-          </center>
-          </div>
-        </div>
-      </div>
-      </div>
+       <Header/>
+  <div className = "dashboardHeader_left">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <center>
+  <h1>Hello, {user.displayName}</h1>
+  </center>
+  {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
+  {/* <HomeIcon/> */}
+  <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
+
+
+  </div>
+
+  <center>
+
+      <h1> Room Numbers on 1st Floor </h1>
+      <br/>
+
+      <button class="button is-dark" onClick={setRoom}>Room {roomNum}</button>
+  </center>
+
+
+  {/* <Canvas floor="G"/> */}
     </div>
   );
 }
