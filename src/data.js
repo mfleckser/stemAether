@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore"
 import { useHistory } from "react-router-dom";
 import { Redirect } from "react-router";
 import { user } from './App.js'
@@ -54,33 +54,16 @@ const logout = () => {
 };
 
 
-const checkoutRoom = async (floorNum, roomNum) => {
-  const res = await db.collection(floorNum).doc(roomNum).get();
-  const data = res.data();
-  console.log(data);
-
-//   db.collection("rooms").doc("0").set({
-//     roomName: "1234",
-//     occupied: true
-// })
-}
 
 const occupyRoom = async (floorNum, roomNum, displayName) => {
   db.collection(floorNum).doc(roomNum).set({
     occupied: true,
-    peopleNames: [displayName]
+    peopleNames: firebase.firestore.FieldValue.arrayUnion(displayName)
   },
   { merge: true }
   )
 }
 
-
-// await setDoc(doc(db, "rooms", "G"), {
-//   roomName: "Los Angeles",
-//   name: "CA",
-//   params: "USA",
-//   range: ""
-// });
 
 
 export {
@@ -88,6 +71,5 @@ export {
   db,
   signInWithGoogle,
   logout,
-  checkoutRoom,
   occupyRoom
 };
