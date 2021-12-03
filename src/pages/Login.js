@@ -15,9 +15,19 @@ function Login() {
     }
 
   return (
-    <div>
-        <button onClick={handleLogin}>Login</button>
-    </div>
+      <div className= "wholeThing">
+      <p className="welcomeTitle">Welcome To</p> 
+
+      <div className="mfTitle">
+        <h1 className="titleSTEM">STEM</h1>
+        <h1 className="titleAE"> AETHER</h1>
+      </div>
+
+
+        <button className = "buttonSignIn" onClick={handleLogin}>Sign In With Google</button>
+
+
+      </div>
   );
 }
 
