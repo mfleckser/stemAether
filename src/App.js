@@ -14,6 +14,7 @@ import Checkin from './pages/Checkin.js'
 import GFloor from './pages/GFloor.js'
 import SecondFloor from './pages/SecondFloor.js'
 import FirstFloor from './pages/FirstFloor.js'
+import Login from './pages/Login.js'
 import { useHistory } from "react-router-dom"
 
 
@@ -53,7 +54,15 @@ function App() {
       <Router>
         <div className = "app">
         {!user ? (
-          <Welcome />
+          <Switch>
+            <Route exact path="/">
+              <Welcome/>
+            </Route>
+
+            <Route exact path="/login/:roomNum">
+              <Login/>
+            </Route>
+          </Switch>
         ): (
           <Switch>
           
