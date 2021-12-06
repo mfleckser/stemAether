@@ -14,6 +14,7 @@ import Checkin from './pages/Checkin.js'
 import GFloor from './pages/GFloor.js'
 import SecondFloor from './pages/SecondFloor.js'
 import FirstFloor from './pages/FirstFloor.js'
+import Floor from './pages/Floor.js'
 import Login from './pages/Login.js'
 import { useHistory } from "react-router-dom"
 
@@ -86,7 +87,10 @@ function App() {
               <Contact/>
             </Route>
   
-            <Route exact path="/ground">
+            <Route exact path="/floor/:floorNum">
+              <Floor/>
+            </Route>
+            {/*<Route exact path="/ground">
               <GFloor user = {user}/>
             </Route>
   
@@ -95,8 +99,8 @@ function App() {
             </Route>
             
             <Route exact path="/secondFloor">
-              <SecondFloor user = {user}/>
-            </Route>
+        <SecondFloor user = {user}/>
+        </Route>*/}
   
   
           </Switch>

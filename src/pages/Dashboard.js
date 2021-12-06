@@ -17,9 +17,9 @@ function Dashboard({ user }) {
     history.replace(<Welcome/>);
   }
 
-  const onClickG = () => history.push("/ground");
-  const onClick1 = () => history.push("/firstFloor");
-  const onClick2 = () => history.push("/secondFloor");
+  const onClickG = () => history.push("/floor/0");
+  const onClick1 = () => history.push("/floor/1");
+  const onClick2 = () => history.push("/floor/2");
 
   console.log("This is email:" + user.email)
 
