@@ -64,12 +64,18 @@ const occupyRoom = async (floorNum, roomNum, displayName) => {
   )
 }
 
-const getRoomData = async (floorNum, roomNum) => {
-  const res = await db.collection("1stFloor").doc("0").get().then(doc => {
-    const data = doc.data();
+const getRoomData = async (floorNum) => {
+  const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+  const res = await db.collection(collectionNames[floorNum]).get().then(querySnapshot => {
+    const data = querySnapshot.docs.map(doc => doc.data());
     console.log(data); // LA city object with key-value pair
+    return data;
   });
+
+
+
 }
+
 
 
 
