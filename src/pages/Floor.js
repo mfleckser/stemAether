@@ -54,7 +54,7 @@ const Floor = () => {
                 <ListItem key={roomDat.id} >
 
                   <ListItemText
-                    primary={"Room" + " " + roomDat.id + " " + "is" + " " + roomDat.occupied}
+                    primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
                     secondary={"People in Room: " + roomDat.peopleNames}
                   />
 
