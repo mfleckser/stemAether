@@ -12,22 +12,6 @@ const Floor = () => {
     let { floorNum } = useParams();
     const [roomData, setRoomData] = useState([]);
 
-  //   useEffect(() => {  
-  //      const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
-  //     firebase.firestore().collection(collectionNames[floorNum]).get().then(querySnapshot => {
-  //       var floorNames = []
-  //       if (!querySnapshot.empty) {
-  //         querySnapshot.forEach((childSnapshot) => {
-  //           var id = childSnapshot.id;
-  //           var data = childSnapshot.val();
-  //           floorNames.push({id: id, occupied: data.occupied, peopleNames: data.peopleNames})
-  //           setRoomData(childSnapshot.data())
-  //         }); 
-  //         }  else{
-  //           setRoomData({});
-  //         }
-  //     })  
-  // }, [])  
 
   useEffect(() => {
     console.log('useEffect Hook!!!');
@@ -46,26 +30,9 @@ const Floor = () => {
   }, []);
 
 
-    // const getRoomData =  (floorNum) => {
-    //   const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
-    //   const res = firebase.firestore().collection(collectionNames[floorNum]).get().then(querySnapshot => {
-    //     const data = querySnapshot.docs.map(doc => doc.data());
-    //     console.log(data); // LA city object with key-value pair
-    //     return data;
-    //   });
-    
-    // }
 
-    // useEffect(() => {
-    //     setRoomData(getRoomData(floorNum))
-        
-    //   }, [])
 
-      // const displayRoomData = async () => {
-      //   const data = getRoomData(floorNum)
-      //   setRoomData(data)
-      //   console.log(data)
-      // }
+
 
 
     return (
@@ -87,8 +54,8 @@ const Floor = () => {
                 <ListItem key={roomDat.id} >
 
                   <ListItemText
-                    primary={roomDat.occupied}
-                    secondary={roomDat.peopleNames}
+                    primary={"Room" + " " + roomDat.id + " " + "is" + " " + roomDat.occupied}
+                    secondary={"People in Room: " + roomDat.peopleNames}
                   />
 
                 </ListItem>
@@ -96,11 +63,7 @@ const Floor = () => {
             }
       </List>
 
-                                
-                                        
-            {/* <button onClick={displayRoomData}>Click here for data</button> */}
 
-            {/* {roomData?<div>{roomData["occupied"]}</div> : <div>thing</div>} */}
            
 
 
