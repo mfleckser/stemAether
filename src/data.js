@@ -85,5 +85,6 @@ export {
   signInWithGoogle,
   logout,
   occupyRoom,
-  getRoomData
+  getRoomData,
+  firebase
 };
