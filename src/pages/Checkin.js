@@ -28,7 +28,10 @@ function Checkin({user}) {
     <div>
         <Header/>
         <br/>
-        <br/><br/><br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
        <center><h1 className="titleSTEM">Room #: {roomNum} </h1></center>
         <button className = "buttonSignIn" onClick={setRoom}>Occupy room</button>
 

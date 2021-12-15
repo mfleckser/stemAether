@@ -88,7 +88,7 @@ function App() {
             </Route>
   
             <Route exact path="/floor/:floorNum">
-              <Floor/>
+              <Floor user = {user}/>
             </Route>
             {/*<Route exact path="/ground">
               <GFloor user = {user}/>

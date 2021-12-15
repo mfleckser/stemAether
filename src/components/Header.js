@@ -39,7 +39,9 @@ function Header() {
             About
           </a>
           <hr className = "horizontal_line"/>
-          <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
+          <center>
+          <button className = "buttonSignOut" onClick={handleSignOut}>Sign out</button>
+          </center>
         </Menu>
       </div>
     )

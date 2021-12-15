@@ -54,8 +54,34 @@
   cursor: pointer;
 }
 
+.buttonSignOut {
+  background: #ff6d88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  border: none;
+  padding: 15px 32px;
+  font-family: Verdana;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.buttonSignOut:hover {
+  background: #6a7081;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .buttonSignIn {
+    width: 90%;
+    margin: 5%;
+  }
+
+  .buttonSignOut {
     width: 90%;
     margin: 5%;
   }

@@ -5,12 +5,15 @@ import { useState, useEffect } from 'react'
 import { getRoomData } from '../data.js'
 import { firebase } from '../data.js'
 import { Button, TextField, Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { AddCircleOutlineRounded, DeleteOutlineRounded, Edit } from '@material-ui/icons';
 
 
 
-const Floor = () => {
+
+const Floor = ({user}) => {
     let { floorNum } = useParams();
     const [roomData, setRoomData] = useState([]);
+    const possibleRemovedValue = user.displayName;
 
 
   useEffect(() => {
@@ -28,6 +31,17 @@ const Floor = () => {
     })
 
   }, []);
+
+
+
+  const deletePerson = (id) => {
+    const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+    firebase.firestore().collection(collectionNames[floorNum]).doc(id).update({
+      peopleNames: firebase.firestore.FieldValue.arrayRemove(possibleRemovedValue)
+    }).catch(function(error) {
+      console.error(error)
+    })
+  }
 
 
 
@@ -57,6 +71,15 @@ const Floor = () => {
                     primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
                     secondary={"People in Room: " + roomDat.peopleNames}
                   />
+
+                {/* <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
+                  <DeleteOutlineRounded />
+                </IconButton>
+              </ListItemSecondaryAction> */}
+
+              <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
+
 
                 </ListItem>
               ))
