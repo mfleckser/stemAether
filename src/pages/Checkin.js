@@ -1,5 +1,5 @@
 import './Welcome.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import { occupyRoom} from "../data.js"
 import { collection, getDocs } from "firebase/firestore"
@@ -13,12 +13,25 @@ import Dashboard from './Dashboard'
 function Checkin({user}) {
     let { roomNum } = useParams();
     let history = useHistory();
-
-    const [floorNum, setFloorNum] = useState("1stFloor");
-
+    const [floorNum, setFloorNum] = useState("2ndFloor");
 
 
+
+  useEffect(() => {
+    console.log("What is roomNum" + roomNum)
+    if (roomNum.charAt(0) == "G") {
+      setFloorNum("GFloor")
+    } else if (roomNum.charAt(0) == "1"){
+      setFloorNum("1stFloor")
+    } else {
+      setFloorNum("2ndFloor")
+    }
+    
+  }, [])
+
+  
     const setRoom = () => {
+      
       occupyRoom(floorNum, roomNum, user.displayName);
       history.replace("/")
       console.log("function called")
