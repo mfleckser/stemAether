@@ -59,10 +59,9 @@ function App() {
             <Route exact path="/">
               <Welcome/>
             </Route>
-
-            <Route exact path="/login/:roomNum">
-              <Login/>
-            </Route>
+            <Route exact path="/checkin/:roomNum">
+                  <Login/>
+              </Route>
           </Switch>
         ): (
           <Switch>
@@ -70,11 +69,11 @@ function App() {
             <Route exact path="/">
               <Dashboard user = {user} />
             </Route>
-  
+
             <Route path="/checkin/:roomNum">
               <Checkin user = {user} />
             </Route>
-  
+            
             <Route exact path="/settings">
               <Settings />
             </Route>

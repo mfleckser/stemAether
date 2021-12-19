@@ -9,7 +9,7 @@ function Login() {
     let { roomNum } = useParams();
 
     const handleLogin = () => {
-        alert(roomNum);
+        // alert(roomNum);
         signInWithGoogle();
         history.push("/checkin/" + roomNum);
     }
