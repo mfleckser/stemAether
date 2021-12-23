@@ -22,11 +22,21 @@ const Floor = ({user}) => {
     firebase.firestore().collection(collectionNames[floorNum]).onSnapshot(snapshot => {
       console.log('Firebase Snap!');
       setRoomData(snapshot.docs.map(doc => {
+        if (doc.data().peopleNames.length > 0) {
         return {
           id: doc.id,
           occupied: doc.data().occupied,
           peopleNames: doc.data().peopleNames
         }
+
+      } else {
+        return {
+          id: doc.id,
+          occupied: false,
+          peopleNames: doc.data().peopleNames
+        }
+      }
+        
       }))
     })
 
