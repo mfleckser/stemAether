@@ -55,53 +55,98 @@ const Floor = ({user}) => {
 
 
 
-
-
-
-
+  if (user.email.includes("@dasd.org")) {
     return (
-        <div>
-            <Header/>
-            <div className = "dashboardHeader_left">
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          
-        </div>
-            Floor: {floorNum}
+      <div>
+          <Header/>
+          <div className = "dashboardHeader_left">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+      </div>
+          Floor: {floorNum}
 
-      <List dense={true}>
-            {
-              roomData.map(roomDat => (
+    <List dense={true}>
+          {
+            roomData.map(roomDat => (
 
-                <ListItem key={roomDat.id} >
+              <ListItem key={roomDat.id} >
+                
+                
+                <ListItemText
+                  primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
+                  secondary={"People in Room: " + roomDat.peopleNames}
+                />
 
-                  <ListItemText
-                    primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
-                    secondary={"People in Room: " + roomDat.peopleNames}
-                  />
+              {/* <ListItemSecondaryAction>
+              <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
+                <DeleteOutlineRounded />
+              </IconButton>
+            </ListItemSecondaryAction> */}
 
-                {/* <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
-                  <DeleteOutlineRounded />
-                </IconButton>
-              </ListItemSecondaryAction> */}
-
-              <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
-
-
-                </ListItem>
-              ))
-            }
-      </List>
+            <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
 
 
-           
+              </ListItem>
+            ))
+          }
+    </List>
 
 
-        </div>
-    )
+         
+
+
+      </div>
+  )
+  } else {
+    return (
+      <div>
+          <Header/>
+          <div className = "dashboardHeader_left">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+      </div>
+          Floor: {floorNum}
+
+    <List dense={true}>
+          {
+            roomData.map(roomDat => (
+
+              <ListItem key={roomDat.id} >
+                
+                
+                <ListItemText
+                  primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
+                  secondary={"Number of People in Room: " + roomDat.peopleNames.length}
+                />
+
+              {/* <ListItemSecondaryAction>
+              <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
+                <DeleteOutlineRounded />
+              </IconButton>
+            </ListItemSecondaryAction> */}
+
+            <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
+
+
+              </ListItem>
+            ))
+          }
+    </List>
+
+
+         
+
+
+      </div>
+  )
+  }
+ 
 }
 
 export default Floor;

@@ -27,7 +27,7 @@ function Dashboard({ user }) {
 
 
 
-  if (user.email.includes("dasd.org")){
+  if (user.email.includes("@student.dasd.org")){
     return(
       <div>
         <Header/>
@@ -80,6 +80,24 @@ function Dashboard({ user }) {
         </div>
       </div>
     );
+  } else if (user.email.includes("@dasd.org")) {
+    return(
+      <div>
+        <Header/>
+          <div className = "dashboardHeader_left">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <center>
+          <h1>Hello, {user.displayName}</h1>
+          </center>
+          {/* <img className = "img_fit" src={user.photoURL} alt="" /> */}
+          {/* <HomeIcon/> */}
+          <button class="button is-dark" onClick={handleSignOut}>Sign out</button>
+          </div>
+        </div>
+    )
   } else {
     return <Welcome/>
   }
