@@ -1,0 +1,39 @@
+.roomItem {
+    background-color: #eee;
+    border: 2px solid gray;
+    padding: 15px;
+    max-width: 50%;
+    margin: 30px;
+    display: grid;
+    grid-template: 5fr 1fr / 1fr 1fr;
+}
+
+.roomTitle {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.peopleList {
+    font-weight: 500;
+    grid-row: 1 / span 2;
+    grid-column: 2 / span 1;
+    border-left: 1px solid lightgray;
+    padding: 30px;
+    padding-top: 10px;
+}
+
+.checkOutButton {
+    padding: 5px;
+    margin-right: 30px;
+}
+
+#floorNum {
+    align-self: center;
+    font-weight: 600;
+    font-size: 40px;
+}
+
+#wholePage {
+    display: flex;
+    flex-direction: column;
+}

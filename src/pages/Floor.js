@@ -7,6 +7,8 @@ import { firebase } from '../data.js'
 import { Button, TextField, Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Dialog, DialogContent, DialogActions } from '@material-ui/core';
 import { AddCircleOutlineRounded, DeleteOutlineRounded, Edit } from '@material-ui/icons';
 
+import "./floor.css"
+
 
 
 
@@ -55,9 +57,9 @@ const Floor = ({user}) => {
 
 
 
-  if (user.email.includes("@dasd.org")) {
+  /*if (user.email.includes("@dasd.org")) {*/
     return (
-      <div>
+      <div id="wholePage">
           <Header/>
           <div className = "dashboardHeader_left">
         <br/>
@@ -66,12 +68,12 @@ const Floor = ({user}) => {
         <br/>
         
       </div>
-          Floor: {floorNum}
+          <span id="floorNum">Floor: {floorNum}</span>
 
-    <List dense={true}>
+    {/*<List dense={true}>*/}
           {
-            roomData.map(roomDat => (
-
+            roomData.map(roomDat => (/*
+<div className="floorItem">
               <ListItem key={roomDat.id} >
                 
                 
@@ -84,15 +86,27 @@ const Floor = ({user}) => {
               <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
                 <DeleteOutlineRounded />
               </IconButton>
-            </ListItemSecondaryAction> */}
+            </ListItemSecondaryAction> }
 
             <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
 
 
               </ListItem>
+              </div>*/
+              <div key={roomDat.id} className="roomItem">
+                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
+                <div className="peopleList">{"People in Room: "}
+                <div>{roomDat.peopleNames.map(name => {
+                  return <span key={name} className="personName">{name}</span>
+                })}</div>
+                </div>
+                <button 
+                disabled={!roomDat.peopleNames.includes(user.displayName)}
+                onClick={() => deletePerson(roomDat.id)} className="checkOutButton">Check Out</button>
+              </div>
             ))
           }
-    </List>
+    {/*</List>*/}
 
 
          
@@ -100,8 +114,7 @@ const Floor = ({user}) => {
 
       </div>
   )
-  } else {
-    return (
+    /*return (
       <div>
           <Header/>
           <div className = "dashboardHeader_left">
@@ -129,7 +142,7 @@ const Floor = ({user}) => {
               <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
                 <DeleteOutlineRounded />
               </IconButton>
-            </ListItemSecondaryAction> */}
+            </ListItemSecondaryAction> }
 
             <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
 
@@ -144,8 +157,8 @@ const Floor = ({user}) => {
 
 
       </div>
-  )
-  }
+  )*/
+        
  
 }
 
