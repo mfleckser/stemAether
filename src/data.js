@@ -56,7 +56,10 @@ const logout = () => {
 const occupyRoom = async (floorNum, roomNum, displayName) => {
   db.collection(floorNum).doc(roomNum).set({
     occupied: true,
-    peopleNames: firebase.firestore.FieldValue.arrayUnion(displayName)
+    people: firebase.firestore.FieldValue.arrayUnion({
+      name: displayName,
+      time: Date.now()
+    })
   },
   { merge: true }
   )
@@ -69,11 +72,22 @@ const getRoomData = async (floorNum) => {
     console.log(data); // LA city object with key-value pair
     return data;
   });
-
-
-
 }
 
+
+const deletePerson = async (floorNum, roomId, name) => {
+  const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+  const res = await db.collection(collectionNames[floorNum]).doc(roomId).get()
+  const peopleData = res.data()
+  const newData = {...peopleData}
+  console.log(newData)
+  db.collection(collectionNames[floorNum]).doc(roomId).set({
+    people: peopleData.people.filter(person => person.name !== name),
+    occupied: peopleData.people.length > 1
+  }).catch(function(error) {
+    console.error(error)
+  })
+}
 
 
 
@@ -84,5 +98,6 @@ export {
   logout,
   occupyRoom,
   getRoomData,
+  deletePerson,
   firebase
 };
