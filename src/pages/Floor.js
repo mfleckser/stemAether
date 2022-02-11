@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import Header from '../components/Header.js'
 import { useState, useEffect } from 'react'
 import { getRoomData } from '../data.js'
-import { firebase } from '../data.js'
+import { firebase, deletePerson } from '../data.js'
 import { Button, TextField, Container, IconButton, List, ListItem, ListItemSecondaryAction, ListItemText, Dialog, DialogContent, DialogActions } from '@material-ui/core';
 import { AddCircleOutlineRounded, DeleteOutlineRounded, Edit } from '@material-ui/icons';
 
@@ -24,18 +24,24 @@ const Floor = ({user}) => {
     firebase.firestore().collection(collectionNames[floorNum]).onSnapshot(snapshot => {
       console.log('Firebase Snap!');
       setRoomData(snapshot.docs.map(doc => {
-        if (doc.data().peopleNames.length > 0) {
+        if (doc.data().people.length > 0) {
+          const currentTime = Date.now()
+          for(let i = 0; i < doc.data().people.length; i++) {
+            if(currentTime - doc.data().people[i].time > 45 * 60 * 1000) {
+              deletePerson(floorNum, doc.id, possibleRemovedValue)
+            }
+          }
         return {
           id: doc.id,
           occupied: doc.data().occupied,
-          peopleNames: doc.data().peopleNames
+          people: doc.data().people
         }
 
       } else {
         return {
           id: doc.id,
           occupied: false,
-          peopleNames: doc.data().peopleNames
+          people: doc.data().people
         }
       }
         
@@ -46,14 +52,7 @@ const Floor = ({user}) => {
 
 
 
-  const deletePerson = (id) => {
-    const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
-    firebase.firestore().collection(collectionNames[floorNum]).doc(id).update({
-      peopleNames: firebase.firestore.FieldValue.arrayRemove(possibleRemovedValue)
-    }).catch(function(error) {
-      console.error(error)
-    })
-  }
+  
 
 
 
@@ -96,13 +95,13 @@ const Floor = ({user}) => {
               <div key={roomDat.id} className="roomItem">
                 <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"People in Room: "}
-                <div>{roomDat.peopleNames.map(name => {
-                  return <span key={name} className="personName">{name}</span>
+                <div>{roomDat.people.map(person => {
+                  return <span key={person.name} className="personName">{person.name}</span>
                 })}</div>
                 </div>
                 <button 
-                disabled={!roomDat.peopleNames.includes(user.displayName)}
-                onClick={() => deletePerson(roomDat.id)} className="checkOutButton">Check Out</button>
+                disabled={!roomDat.people.map(person => person.name).includes(user.displayName)}
+                onClick={() => deletePerson(floorNum, roomDat.id, possibleRemovedValue)} className="checkOutButton">Check Out</button>
               </div>
             ))
           }
