@@ -54,6 +54,7 @@ const logout = () => {
 
 
 const occupyRoom = async (floorNum, roomNum, displayName) => {
+  
   db.collection(floorNum).doc(roomNum).set({
     occupied: true,
     people: firebase.firestore.FieldValue.arrayUnion({
