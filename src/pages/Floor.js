@@ -17,6 +17,8 @@ const Floor = ({user}) => {
     const [roomData, setRoomData] = useState([]);
     const possibleRemovedValue = user.displayName;
 
+   
+
 
   useEffect(() => {
     console.log('useEffect Hook!!!');
@@ -56,7 +58,7 @@ const Floor = ({user}) => {
 
 
 
-  /*if (user.email.includes("@dasd.org")) {*/
+  if (user.email.includes("@dasd.org")) {
     return (
       <div id="wholePage">
           <Header/>
@@ -71,33 +73,16 @@ const Floor = ({user}) => {
 
     {/*<List dense={true}>*/}
           {
-            roomData.map(roomDat => (/*
-<div className="floorItem">
-              <ListItem key={roomDat.id} >
-                
-                
-                <ListItemText
-                  primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
-                  secondary={"People in Room: " + roomDat.peopleNames}
-                />
-
-              {/* <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
-                <DeleteOutlineRounded />
-              </IconButton>
-            </ListItemSecondaryAction> }
-
-            <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
-
-
-              </ListItem>
-              </div>*/
+            roomData.map(roomDat => (
               <div key={roomDat.id} className="roomItem">
+            
                 <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"People in Room: "}
                 <div>{roomDat.people.map(person => {
                   return <span key={person.name} className="personName">{person.name}</span>
                 })}</div>
+                
+
                 </div>
                 <button 
                 disabled={!roomDat.people.map(person => person.name).includes(user.displayName)}
@@ -112,9 +97,9 @@ const Floor = ({user}) => {
 
 
       </div>
-  )
-    /*return (
-      <div>
+  )} else {
+    return (
+      <div id="wholePage">
           <Header/>
           <div className = "dashboardHeader_left">
         <br/>
@@ -123,42 +108,27 @@ const Floor = ({user}) => {
         <br/>
         
       </div>
-          Floor: {floorNum}
+          <span id="floorNum">Floor: {floorNum}</span>
 
-    <List dense={true}>
+    {/*<List dense={true}>*/}
           {
             roomData.map(roomDat => (
-
-              <ListItem key={roomDat.id} >
-                
-                
-                <ListItemText
-                  primary={"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}
-                  secondary={"Number of People in Room: " + roomDat.peopleNames.length}
-                />
-
-              {/* <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick={() => deletePerson(roomDat.id)}>
-                <DeleteOutlineRounded />
-              </IconButton>
-            </ListItemSecondaryAction> }
-
-            <button onClick={() => deletePerson(roomDat.id)}>Check Out</button>
-
-
-              </ListItem>
+              <div key={roomDat.id} className="roomItem">
+            
+                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
+                <div className="peopleList">{"Number of People in Room: " + roomDat.people.length}
+                </div>
+                <button 
+                disabled={!roomDat.people.map(person => person.name).includes(user.displayName)}
+                onClick={() => deletePerson(floorNum, roomDat.id, possibleRemovedValue)} className="checkOutButton">Check Out</button>
+              </div>
             ))
           }
-    </List>
-
-
-         
-
-
+    {/*</List>*/}
       </div>
-  )*/
-        
- 
+  )
+  }
+
 }
 
 export default Floor;
