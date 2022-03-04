@@ -27,7 +27,7 @@ function Dashboard({ user }) {
 
 
 
-  if (user.email.includes("dasd.org")){
+  if (user.email.includes("dasd.org") || user.email === "help.stemaether@gmail.com"){
     return(
       <div>
         <Header/>

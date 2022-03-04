@@ -58,7 +58,7 @@ const Floor = ({user}) => {
 
 
 
-  if (user.email.includes("@dasd.org")) {
+  if (user.email.includes("@dasd.org") || user.email === "help.stemaether@gmail.com") {
     return (
       <div id="wholePage">
           <Header/>
@@ -115,7 +115,7 @@ const Floor = ({user}) => {
             roomData.map(roomDat => (
               <div key={roomDat.id} className="roomItem">
             
-                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
+                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.people.length > 0 ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"Number of People in Room: " + roomDat.people.length}
                 </div>
                 <button 
