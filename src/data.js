@@ -67,7 +67,7 @@ const occupyRoom = async (floorNum, roomNum, displayName) => {
 }
 
 const getRoomData = async (floorNum) => {
-  const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+  const collectionNames = ["GFloor", "1stFloor", "2ndFloor", "LAL"];
   const res = await db.collection(collectionNames[floorNum]).get().then(querySnapshot => {
     const data = querySnapshot.docs.map(doc => doc.data());
     console.log(data); // LA city object with key-value pair
@@ -77,7 +77,7 @@ const getRoomData = async (floorNum) => {
 
 
 const deletePerson = async (floorNum, roomId, name) => {
-  const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+  const collectionNames = ["GFloor", "1stFloor", "2ndFloor", "LAL"];
   const res = await db.collection(collectionNames[floorNum]).doc(roomId).get()
   const peopleData = res.data()
   const newData = {...peopleData}

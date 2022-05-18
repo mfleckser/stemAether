@@ -22,7 +22,7 @@ const Floor = ({user}) => {
 
   useEffect(() => {
     console.log('useEffect Hook!!!');
-    const collectionNames = ["GFloor", "1stFloor", "2ndFloor"];
+    const collectionNames = ["GFloor", "1stFloor", "2ndFloor", "LAL"];
     firebase.firestore().collection(collectionNames[floorNum]).onSnapshot(snapshot => {
       console.log('Firebase Snap!');
       setRoomData(snapshot.docs.map(doc => {
