@@ -20,7 +20,7 @@ function Dashboard({ user }) {
   const onClickG = () => history.push("/floor/0");
   const onClick1 = () => history.push("/floor/1");
   const onClick2 = () => history.push("/floor/2");
-  const onClickLAL = () => history.push("/floor/LAL");
+  const onClickLAL = () => history.push("/floor/3");
 
   console.log("This is email:" + user.email)
 
