@@ -78,3 +78,21 @@
     margin-right: auto;
   }
 }
+
+.lunch-and-learn-card {
+  color: white;
+  background-color: #6a7081;
+  font-size: 100px;
+  font-family: Almarai;
+  font-style: normal;
+  line-height: 112px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 24px;
+  margin: 3%;
+}
+
+.lunch-and-learn-card:hover {
+  cursor: pointer;
+  color: #ff6d88;
+}
