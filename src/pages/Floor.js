@@ -77,7 +77,7 @@ const Floor = ({user}) => {
             roomData.map(roomDat => (
               <div key={roomDat.id} className="roomItem">
             
-                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.occupied ? "occupied" : "unoccupied")}</span>
+                <span className="roomTitle">{"Room " + roomDat.id + " is " + (roomDat.people.length > 0 ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"People in Room: "}
                 <div>{roomDat.people.map(person => {
                   return <span key={person.name} className="personName">{person.name}</span>
@@ -109,9 +109,11 @@ const Floor = ({user}) => {
         <br/>
         
       </div>
-
-
+        <div id="title">
+          <a id="back" href="/">Back</a>
           <span id="floorNum">Floor: {floorNum}</span>
+          <span></span>
+        </div>
 
     {/*<List dense={true}>*/}
           {
@@ -120,7 +122,7 @@ const Floor = ({user}) => {
 
               <div key={roomDat.id} className="roomItem">
             
-                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.people.length > 1 ? "occupied" : "unoccupied")}</span>
+                <span className="roomTitle">{"Room " + roomDat.id + " is " + (roomDat.people.length > 0 ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"Number of People in Room: " + roomDat.people.length}
                 </div>
                 <button 

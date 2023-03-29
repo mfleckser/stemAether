@@ -44,8 +44,32 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 12px;
   }
+
+  #back {
+    background: #ff6d88;
+    align-items: flex-start;
+    width: 7%;
+    text-align: center;
+    border: none;
+    margin: 15px;
+    padding: 10px 10px;
+    font-family: Verdana;
+    font-weight: bold;
+    color: white;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
   
- 
+  #back:hover {
+    background: #6a7081;
+    cursor: pointer;
+  }
+  
+#title {
+    display: flex;
+    justify-content: space-between;
+}
 
 @media only screen and (max-width: 768px) {
     .roomTitle {
