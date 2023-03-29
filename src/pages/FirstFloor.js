@@ -8,13 +8,6 @@ import 'bulma/css/bulma.min.css';
 import HomeIcon from "@material-ui/icons/Home"
 import { getRoomData } from "../data.js"
 
-import {
-  Line,
-  SteppedLine,
-  PolyLine,
-  Circle,
-  Rectangle
-} from 'draw-shape-reactjs';
 
 
 
