@@ -79,11 +79,11 @@ function App() {
             </Route>
   
             <Route exact path="/about">
-              <About />
+              <About user = {user} />
             </Route>
   
             <Route exact path="/contact">
-              <Contact/>
+              <Contact user = {user}/>
             </Route>
   
             <Route exact path="/floor/:floorNum">

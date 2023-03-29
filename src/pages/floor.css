@@ -1,11 +1,12 @@
 .roomItem {
-    background-color: #eee;
     border: 2px solid gray;
     padding: 15px;
-    max-width: 50%;
+    width: 50%;
     margin: 30px;
     display: grid;
     grid-template: 5fr 1fr / 1fr 1fr;
+    min-height: 200px;
+    background-color: #eee;
 }
 
 .roomTitle {
@@ -37,3 +38,27 @@
     display: flex;
     flex-direction: column;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 12px;
+  }
+  
+ 
+
+@media only screen and (max-width: 768px) {
+    .roomTitle {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .roomItem {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        }
+    
+  }

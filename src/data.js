@@ -54,16 +54,18 @@ const logout = () => {
 
 
 const occupyRoom = async (floorNum, roomNum, displayName) => {
-  
-  db.collection(floorNum).doc(roomNum).set({
-    occupied: true,
-    people: firebase.firestore.FieldValue.arrayUnion({
-      name: displayName,
-      time: Date.now()
-    })
-  },
-  { merge: true }
-  )
+  const rooms = await getRoomData(floorNum)
+  if(rooms.contains(roomNum)) {
+    db.collection(floorNum).doc(roomNum).set({
+      occupied: true,
+      people: firebase.firestore.FieldValue.arrayUnion({
+        name: displayName,
+        time: Date.now()
+      })
+    },
+    { merge: true }
+    )
+  }
 }
 
 const getRoomData = async (floorNum) => {

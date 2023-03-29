@@ -26,11 +26,6 @@ function Header() {
             <a className="menu-item" href="/">
             Home
           </a>
-            
-        
-          <a className="menu-item" href="/settings">
-            Settings
-          </a>
           <a className="menu-item" href="/contact">
             Help & Support
           </a>

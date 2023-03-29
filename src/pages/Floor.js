@@ -8,6 +8,7 @@ import { Button, TextField, Container, IconButton, List, ListItem, ListItemSecon
 import { AddCircleOutlineRounded, DeleteOutlineRounded, Edit } from '@material-ui/icons';
 
 import "./floor.css"
+// import GridLayout from 'react-grid-layout'
 
 
 
@@ -60,7 +61,7 @@ const Floor = ({user}) => {
 
   if (user.email.includes("@dasd.org") || user.email === "help.stemaether@gmail.com") {
     return (
-      <div id="wholePage">
+      <div className="grid" id="wholePage">
           <Header/>
           <div className = "dashboardHeader_left">
         <br/>
@@ -108,20 +109,26 @@ const Floor = ({user}) => {
         <br/>
         
       </div>
+
+
           <span id="floorNum">Floor: {floorNum}</span>
 
     {/*<List dense={true}>*/}
           {
             roomData.map(roomDat => (
+              // <GridLayout className="layout" cols={10} rowHeight={25} width={900}>
+
               <div key={roomDat.id} className="roomItem">
             
-                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.people.length > 0 ? "occupied" : "unoccupied")}</span>
+                <span className="roomTitle">{"Room" + " " + roomDat.id + " " + "is" + " " + (roomDat.people.length > 1 ? "occupied" : "unoccupied")}</span>
                 <div className="peopleList">{"Number of People in Room: " + roomDat.people.length}
                 </div>
                 <button 
                 disabled={!roomDat.people.map(person => person.name).includes(user.displayName)}
-                onClick={() => deletePerson(floorNum, roomDat.id, possibleRemovedValue)} className="checkOutButton">Check Out</button>
+                onClick={() => deletePerson(floorNum, roomDat.id, possibleRemovedValue)} className="checkOutButton">Check Out
+                </button>
               </div>
+              // </GridLayout>
             ))
           }
     {/*</List>*/}
