@@ -17,7 +17,11 @@ import FirstFloor from './pages/FirstFloor.js'
 import Floor from './pages/Floor.js'
 import Login from './pages/Login.js'
 import { useHistory } from "react-router-dom"
-
+// hey guys its taran just wanted to say T CHIGGY T CHIGGY
+// guys make sure yall focus on the code and remember T CHIGGs in Paris
+// POOO KAAAA POOID
+// dont stop dancing poonakalu loading
+// who tf calling my phone
 
 
 
